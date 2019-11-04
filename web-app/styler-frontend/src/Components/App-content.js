@@ -10,7 +10,12 @@ class AppContent extends Component {
     super();
     this.state = {
         file: '',
+        selectedStyle: '1',
     };
+  }
+
+  handleStyleChange = (e) => {
+    this.state.selectedStyle = e.target.value;
   }
 
   handleChangeFile = (e) => {
@@ -18,9 +23,9 @@ class AppContent extends Component {
     document.querySelector(".images > img.preview").src = window.URL.createObjectURL(this.file);
   }
 
-  handleUploadFile = (e) => {
-    var file = this.file;
-    
+  handleUploadFile = () => {
+    const file = this.file;
+    const style = this.state.selectedStyle;
     var upload = new tus.Upload(file, {
         endpoint: "http://127.0.0.1:1080/",
         retryDelays: [0, 3000, 5000, 10000, 20000],
@@ -37,7 +42,9 @@ class AppContent extends Component {
         },
         onSuccess: function() {
             console.log("Download %s from %s", upload.file.name, upload.url)
-            document.querySelector(".images > img.ready").src = upload.url;
+            const img = document.querySelector(".images > img.preview");
+            document.querySelector(".images > img.ready").src
+              = upload.url + "?w=" + img.width + "&h=" + img.height + "&style=" + style;
         }
     })
 
@@ -51,6 +58,7 @@ class AppContent extends Component {
         <AppImageSelect 
           handleChangeFile={this.handleChangeFile}
           handleUploadFile={this.handleUploadFile}
+          handleStyleChange={this.handleStyleChange}
         />
         <div className="images">
           <img className="preview" src={logo} />
