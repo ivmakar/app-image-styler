@@ -8,5 +8,9 @@
     "start": "node app"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "tus-node-server": "^0.3.2",
+    "express": "~4.16.0"
+  }
 }
