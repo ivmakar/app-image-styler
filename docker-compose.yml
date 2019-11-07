@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+
+  image-styler:
+    build: .
+    ports:
+      - "80:5000"
+      - "1080:1080"
+    volumes:
+      - "./src:/www"
+      
