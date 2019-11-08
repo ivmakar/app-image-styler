@@ -38,38 +38,13 @@ app.get('/files/:fileId', (req, res) => {
   // Check if file specified by the filePath exists 
   fs.exists(inFile, function(exists){
       if (exists) {  
-        let model = " --model /home/ivan/university/sct/my-sandbox/sctSt/";
-        let styleImage = " --style-image /home/ivan/university/sct/my-sandbox/sctSt/";
-        console.log(req.query.style);
-        console.log(req.query.w);
-        console.log(req.query.h);
-        switch(req.query.style) {
-          case "1":
-            model += "pilars_model/pilars.model";
-            styleImage += "pilars_model/pilars.jpg"
-            break;
-          case "2":
-            model += "fhs_model/fhs1.model";
-            styleImage += "fhs_model/fhs/fire.jpg"
-            break;
-          case "3":
-            model += "fhs_model/fhs1.model";
-            styleImage += "fhs_model/fhs/hoh.jpg"
-            break;
-          case "4":
-            model += "fhs_model/fhs1.model";
-            styleImage += "fhs_model/fhs/sky.jpg"
-            break;
-          default:
-              console.log("Error!");
-            res.writeHead(400, {"Content-Type": "text/plain"});
-            res.end("ERROR File does not exist");
-            return;
-        }
+        let model = " --model /www/styler/models/" + req.query.model + "/" + req.query.model + ".model";
+        let styleImage = " --style-image /www/styler/models/" + req.query.model + req.query.model + req.query.img;
+        
         const width = req.query.w;
         const height = req.query.h;
         
-        exec("python3 /home/ivan/university/sct/my-sandbox/styler/research/multi_style/demo.py"
+        exec("python3 /www/styler/predict.py"
           + model
           + styleImage
           + " --cuda 0"

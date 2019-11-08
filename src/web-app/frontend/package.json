@@ -6,6 +6,7 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-scripts": "0.9.5",
+    "react-select": "^3.0.8",
     "tus-js-client": "^1.8.0"
   },
   "devDependencies": {},
