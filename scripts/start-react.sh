@@ -7,7 +7,7 @@ set -euxo pipefail
 
 pushd /www/web-app/frontend
 
-files=$(shopt -s nullglob dotglob; echo /www/webapp/frontend/node_modules/*)
+files=$(shopt -s nullglob dotglob; echo /www/web-app/frontend/node_modules/*)
 if (( ${#files} ))
 then  # /db/mysql/ is not empty
   echo "starting react"

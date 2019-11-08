@@ -7,7 +7,7 @@ set -euxo pipefail
 
 pushd /www/web-app/backend
 
-files=$(shopt -s nullglob dotglob; echo /www/webapp/backend/node_modules/*)
+files=$(shopt -s nullglob dotglob; echo /www/web-app/backend/node_modules/*)
 if (( ${#files} ))
 then  # /db/mysql/ is not empty
   echo "starting node server"

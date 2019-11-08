@@ -1,6 +1,11 @@
 #!/bin/bash
 set -euxo pipefail
 
+apt-get update
+apt-get install -y wget unzip
+
+apt-get clean && rm -rf /var/lib/apt/lists/*
+
 #start react
 cp /tmp/start-react.sh /etc/my_init.d/start-react.sh
 chmod +x /etc/my_init.d/start-react.sh
