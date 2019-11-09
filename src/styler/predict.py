@@ -67,9 +67,8 @@ def predict(args):
     style_model.set_target(style)
     
     img = style_model(img)
-
-    utils.tensor_save_rgbimage(img, args.out_image, args.cuda)
     
+    utils.tensor_save_rgbimage(img, args.out_image, args.cuda)
 
 
 def main():
