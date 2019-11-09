@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*
-import os
 import argparse
-import cv2
-import numpy as np
 import torch
 from torch.autograd import Variable
 
@@ -70,15 +67,9 @@ def predict(args):
     style_model.set_target(style)
     
     img = style_model(img)
+
+    utils.tensor_save_rgbimage(img, args.out_image, args.cuda)
     
-    if args.cuda:
-        img = img.cpu().clamp(0, 255).data[0].numpy()
-    else:
-        img = img.clamp(0, 255).data[0].numpy()
-    img = np.squeeze(img)
-    img = img.transpose(1, 2, 0).astype('uint8')
-    
-    cv2.imwrite(args.out_image, img)
 
 
 def main():
