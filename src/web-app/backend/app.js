@@ -39,7 +39,7 @@ app.get('/files/:fileId', (req, res) => {
   fs.exists(inFile, function(exists){
       if (exists) {  
         let model = " --model /www/styler/models/" + req.query.model + "/" + req.query.model + ".model";
-        let styleImage = " --style-image /www/styler/models/" + req.query.model + req.query.model + req.query.img;
+        let styleImage = " --style-image /www/styler/models/" + req.query.model + "/" + req.query.model + "/"  + req.query.img;
         
         const width = req.query.w;
         const height = req.query.h;
@@ -75,7 +75,7 @@ app.get('/files/:fileId', (req, res) => {
 });
 const server = http.createServer(app);
 
-const host = '127.0.0.1';
+const host = '0.0.0.0';
 const port = 1080;
 server.listen({ host, port }, () => {
     console.log(`tus server listening at http://${host}:${port}`);

@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "tus-node-server": "^0.3.2",
-    "express": "~4.16.0"
+    "express": "^4.17.1",
+    "tus-node-server": "^0.3.2"
   }
 }
