@@ -32,6 +32,7 @@ def tensor_save_rgbimage(tensor, filename, cuda=False):
     if len(img.shape) == 4:
         img = img.squeeze(0)
     img = img.transpose(1, 2, 0).astype('uint8')
+    img = img[..., ::-1]
     img = Image.fromarray(img)
     img.save(filename)
 
