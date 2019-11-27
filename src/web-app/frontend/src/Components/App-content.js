@@ -48,8 +48,8 @@ class AppContent extends Component {
     { value: 'model=art&img=rain_princess.jpg', label: 'rain_princess'}
   ]
 
-  handleStyleChange = (e) => {
-    this.state.selectedStyle = e.target.value;
+  handleStyleChange = (value) => {
+    this.state.selectedStyle = value;
   }
 
   handleChangeFile = (e) => {
@@ -97,14 +97,14 @@ class AppContent extends Component {
       <div className="app-content">
         <div className="image-select">
           <input type="file" id="fileName" accept="image/jpeg" onChange={this.handleChangeFile} />
-          <div className="style-select" onChange={this.handleStyleChange.bind(this)}>
+          <div className="style-select">
             <Select
               className="basic-single"
               classNamePrefix="select"
               defaultValue={this.styles[0]}
               name="style"
               options={this.styles}
-              onChange={this.handleSelectStyle}
+              onChange={this.handleStyleChange}
               value={selectedOption}
             />
           </div>
